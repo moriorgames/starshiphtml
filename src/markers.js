@@ -1,7 +1,8 @@
 import initMarkers from './initMarkers.js';
 
 const horizon = 250;
-let markersArray = initMarkers(horizon);
+const markersRows = 3;
+let markersArray = initMarkers(horizon, markersRows);
 let markers1 = markersArray[0];
 let markers2 = markersArray[1];
 let markers3 = markersArray[2];
