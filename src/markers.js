@@ -1,32 +1,15 @@
-let markers1 = [];
-let markers2 = [];
-let markers3 = [];
+import initMarkers from './initMarkers.js';
+
+const horizon = 250;
+let markersArray = initMarkers(horizon);
+let markers1 = markersArray[0];
+let markers2 = markersArray[1];
+let markers3 = markersArray[2];
 const parallax = 0.1;
 const markSpeed = 0.7;
-const horizon = 250;
 const stepCloser = 17;
 const markerSize = 0.15;
 const canvasPaddingOnParallax = 50;
-
-function initMarkers() {
-    markers1.push({x: 100, y: horizon, size: 2});
-    markers1.push({x: 200, y: horizon, size: 2});
-    markers1.push({x: 300, y: horizon, size: 2});
-    markers1.push({x: 400, y: horizon, size: 2});
-    markers1.push({x: 500, y: horizon, size: 2});
-
-    markers2.push({x: 100, y: horizon + 65, size: 2});
-    markers2.push({x: 200, y: horizon + 65, size: 2});
-    markers2.push({x: 300, y: horizon + 65, size: 2});
-    markers2.push({x: 400, y: horizon + 65, size: 2});
-    markers2.push({x: 500, y: horizon + 65, size: 2});
-
-    markers3.push({x: 100, y: horizon + 130, size: 2});
-    markers3.push({x: 200, y: horizon + 130, size: 2});
-    markers3.push({x: 300, y: horizon + 130, size: 2});
-    markers3.push({x: 400, y: horizon + 130, size: 2});
-    markers3.push({x: 500, y: horizon + 130, size: 2});
-}
 
 function resetMarkersPosition(markers) {
     let x = 100;

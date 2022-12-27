@@ -1,4 +1,4 @@
-function initMarkers(horizon) {
+export default function initMarkers(horizon) {
     return [
         [
             {x: 100, y: horizon, size: 2},
@@ -23,5 +23,3 @@ function initMarkers(horizon) {
         ]
     ];
 }
-
-module.exports = initMarkers;

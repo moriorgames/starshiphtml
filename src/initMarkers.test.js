@@ -1,7 +1,6 @@
-const initMarkers = require('./initMarkers');
+import initMarkers from './initMarkers.js';
 
 test('Returns an array with 3 elements', () => {
-
     let horizon = 50;
     let array = initMarkers(horizon);
 
