@@ -1,5 +1,21 @@
 import initMarkers from './initMarkers.js';
 
+test('Returns an array with Zero elements', () => {
+    const horizon = 50;
+    const rows = 0;
+    const array = initMarkers(horizon, rows);
+
+    expect(array.length).toBe(0);
+});
+
+test('For a number of rows negative it returns an array with Zero elements', () => {
+    const horizon = 50;
+    const rows = -1;
+    const array = initMarkers(horizon, rows);
+
+    expect(array.length).toBe(0);
+});
+
 test('Returns an array with 3 elements', () => {
     const horizon = 50;
     const rows = 3;
