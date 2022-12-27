@@ -1,4 +1,4 @@
-import initMarkers from './initMarkers.js';
+import initMarkers from '../src/initMarkers.js';
 
 test('Returns an array with Zero elements', () => {
     const horizon = 50;
