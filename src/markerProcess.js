@@ -53,7 +53,6 @@ function drawMarkers() {
 }
 
 // Inicia el bucle de dibujo
-initMarkers();
 drawMarkers();
 
 window.addEventListener("keydown", (event) => {
