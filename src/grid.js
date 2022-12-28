@@ -1,18 +1,25 @@
 export default class Grid {
-    constructor(width, height) {
-        this._initializeGrid(width, height);
+    constructor(width, height, depth) {
+        this._initializeGrid(width, height, depth);
     }
 
-    getCoordinateValue(x, y) {
-        return this.grid[x][y];
+    getCoordinateValue(x, y, z) {
+        return this.grid[x][y][z];
     }
 
-    _initializeGrid(width, height) {
+    printGrid() {
+        console.log(this.grid)
+    }
+
+    _initializeGrid(width, height, depth) {
         this.grid = [];
         for (let x = 0; x < width; x++) {
             this.grid[x] = [];
             for (let y = 0; y < height; y++) {
-                this.grid[x][y] = 0;
+                this.grid[x][y] = [];
+                for (let z = 0; z < depth; z++) {
+                    this.grid[x][y][z] = 0;
+                }
             }
         }
     }
