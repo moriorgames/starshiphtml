@@ -9,6 +9,10 @@ export default class Grid {
         this._initializeGrid(width, height, depth);
     }
 
+    getData() {
+        return this.grid;
+    }
+
     getCoordinateValue(coordinate) {
         if (coordinate instanceof Coordinate) {
             return this.grid[coordinate.getZ()][coordinate.getY()][coordinate.getX()];
@@ -25,7 +29,6 @@ export default class Grid {
 
     _initializeGrid(width, height, depth) {
         this.grid = [];
-
 
         for (let z = 0; z < depth; z++) {
             this.grid[z] = [];
