@@ -1,5 +1,5 @@
 export const GRID_SIZE = {
-    WIDTH: 5,
-    HEIGHT: 5,
-    DEPTH: 5
+    WIDTH: 15,
+    HEIGHT: 11,
+    DEPTH: 9
 };

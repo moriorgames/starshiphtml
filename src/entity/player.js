@@ -3,6 +3,7 @@ import {PLAYER_INIT_COORDINATE} from '../definitions/playerInitCoordinate.js';
 
 export default class Player {
     constructor() {
+        console.log('new Player');
         this.x = PLAYER_INIT_COORDINATE.X;
         this.y = PLAYER_INIT_COORDINATE.Y;
         this.z = PLAYER_INIT_COORDINATE.Z;

@@ -1,4 +1,5 @@
 import {ENTITY_TYPES} from '../definitions/entityTypes.js';
+import Coordinate from './coordinate.js';
 
 export default class Grid {
     constructor(width, height, depth) {
@@ -8,8 +9,14 @@ export default class Grid {
         this._initializeGrid(width, height, depth);
     }
 
-    getCoordinateValue(x, y, z) {
-        return this.grid[x][y][z];
+    getCoordinateValue(coordinate) {
+        if (coordinate instanceof Coordinate) {
+            return this.grid[coordinate.getZ()][coordinate.getY()][coordinate.getX()];
+        }
+    }
+
+    updateCoordinateValue(coordinate, value) {
+        this.grid[coordinate.getZ()][coordinate.getY()][coordinate.getX()] = value;
     }
 
     printGrid() {
@@ -18,12 +25,14 @@ export default class Grid {
 
     _initializeGrid(width, height, depth) {
         this.grid = [];
-        for (let x = 0; x < width; x++) {
-            this.grid[x] = [];
+
+
+        for (let z = 0; z < depth; z++) {
+            this.grid[z] = [];
             for (let y = 0; y < height; y++) {
-                this.grid[x][y] = [];
-                for (let z = 0; z < depth; z++) {
-                    this.grid[x][y][z] = ENTITY_TYPES.EMPTY;
+                this.grid[z][y] = [];
+                for (let x = 0; x < width; x++) {
+                    this.grid[z][y][x] = ENTITY_TYPES.EMPTY;
                 }
             }
         }

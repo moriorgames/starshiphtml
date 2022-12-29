@@ -1,5 +1,5 @@
 export const PLAYER_INIT_COORDINATE = {
-    X: 2,
-    Y: 2,
-    Z: 2
+    X: 7,
+    Y: 6,
+    Z: 8
 };
