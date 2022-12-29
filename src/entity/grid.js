@@ -1,3 +1,4 @@
+import {GRID_SIZE} from '../definitions/gridSize.js';
 import {ENTITY_TYPES} from '../definitions/entityTypes.js';
 import Coordinate from './coordinate.js';
 
@@ -20,7 +21,11 @@ export default class Grid {
     }
 
     updateCoordinateValue(coordinate, value) {
-        this.grid[coordinate.getZ()][coordinate.getY()][coordinate.getX()] = value;
+        if (coordinate.getZ() < GRID_SIZE.DEPTH &&
+            coordinate.getY() < GRID_SIZE.HEIGHT &&
+            coordinate.getX() < GRID_SIZE.WIDTH) {
+            this.grid[coordinate.getZ()][coordinate.getY()][coordinate.getX()] = value;
+        }
     }
 
     printGrid() {
