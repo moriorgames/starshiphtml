@@ -3,7 +3,7 @@ import {ENTITY_TYPES} from '../definitions/entityTypes.js';
 export default class Grid {
     constructor(width, height, depth) {
         if (width < 1 || height < 1 || depth < 1) {
-            throw new Error('Invalid values for width, height, and depth');
+            throw new Error('Invalid values for width, height or depth');
         }
         this._initializeGrid(width, height, depth);
     }

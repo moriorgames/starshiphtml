@@ -8,7 +8,7 @@ test('Throw an error if any of the values on the constructor is not valid', () =
         new Grid(width, height, depth);
         fail('An error should have been thrown');
     } catch (error) {
-        expect(error.message).toBe('Invalid values for width, height, and depth');
+        expect(error.message).toBe('Invalid values for width, height or depth');
     }
 });
 
