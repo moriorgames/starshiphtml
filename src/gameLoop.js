@@ -12,7 +12,7 @@ function gameLoop() {
 
     drawGameElements(canvas, ctx);
 
-    requestAnimationFrame(gameLoop);
+    // requestAnimationFrame(gameLoop);
 }
 
 gameLoop();
