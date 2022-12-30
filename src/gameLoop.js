@@ -15,7 +15,7 @@ function gameLoop() {
 
     drawBackground(canvas, ctx);
 
-    (new GameElements).drawGameElements(canvas, ctx, grid);
+    (new GameElements).draw(canvas, ctx, grid);
 
     // requestAnimationFrame(gameLoop);
 }
