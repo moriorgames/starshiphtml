@@ -14,38 +14,31 @@ test('Throw an error if any of the values on the constructor is not valid', () =
     }
 });
 
-test('Is able to call Grid constructor and initialize grid with "zero" values', () => {
-    const width = 5;
-    const height = 5;
-    const depth = 5;
-    const grid = new Grid(width, height, depth);
+describe('Grid with same constructor', () => {
+    let sut = null;
 
-    expect(grid.getCoordinateValue(new Coordinate(1, 1, 0))).toBe(0);
-    expect(grid.getCoordinateValue(new Coordinate(2, 3, 1))).toBe(0);
-    expect(grid.getCoordinateValue(new Coordinate(4, 4, 4))).toBe(0);
-});
+    beforeEach(() => {
+        sut = new Grid(5, 5, 5);
+    });
 
-test('Is able to print a grid', () => {
-    const width = 5;
-    const height = 5;
-    const depth = 5;
-    const grid = new Grid(width, height, depth);
+    test('Is able to call Grid constructor and initialize grid with "zero" values', () => {
+        expect(sut.getCoordinateValue(new Coordinate(1, 1, 0))).toBe(0);
+        expect(sut.getCoordinateValue(new Coordinate(2, 3, 1))).toBe(0);
+        expect(sut.getCoordinateValue(new Coordinate(4, 4, 4))).toBe(0);
+    });
 
-    grid.printGrid();
-});
+    test('Is able to print a grid', () => {
+        sut.printGrid();
+    });
 
-test('Is able to update a Coordinate value', () => {
-    const width = 5;
-    const height = 5;
-    const depth = 5;
-    const grid = new Grid(width, height, depth);
+    test('Is able to update a Coordinate value', () => {
+        const x = 1;
+        const y = 2;
+        const z = 3;
+        const value = ENTITY_TYPES.PLAYER;
+        const coordinate = new Coordinate(x, y, z);
+        sut.updateCoordinateValue(coordinate, value);
 
-    const x = 1;
-    const y = 2;
-    const z = 3;
-    const value = ENTITY_TYPES.PLAYER;
-    const coordinate = new Coordinate(x, y, z);
-    grid.updateCoordinateValue(coordinate, value);
-
-    expect(grid.getCoordinateValue(coordinate)).toBe(value);
+        expect(sut.getCoordinateValue(coordinate)).toBe(value);
+    });
 });
