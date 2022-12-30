@@ -5,7 +5,7 @@ import GridFactory from './factory/gridFactory.js';
 import Player from './entity/player.js';
 import updateGameState from './gameState.js';
 import drawBackground from './presenter/background.js';
-import drawGameElements from './presenter/gameElements.js';
+import GameElements from './presenter/gameElements.js';
 
 function gameLoop() {
     const player = new Player;
@@ -15,7 +15,7 @@ function gameLoop() {
 
     drawBackground(canvas, ctx);
 
-    drawGameElements(canvas, ctx, grid);
+    (new GameElements).drawGameElements(canvas, ctx, grid);
 
     // requestAnimationFrame(gameLoop);
 }
