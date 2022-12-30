@@ -5,6 +5,7 @@ import {ENTITY_TYPES} from './definitions/entityTypes.js';
 import GridFactory from './factory/gridFactory.js';
 import Player from './entity/player.js';
 import PlayerController from './controller/playerController.js';
+import EnemyShotController from './controller/enemyShotController.js';
 import updateGameState from './gameState.js';
 import drawBackground from './presenter/background.js';
 import GameElements from './presenter/gameElements.js';
@@ -12,12 +13,13 @@ import GameElements from './presenter/gameElements.js';
 const player = new Player;
 const grid = (new GridFactory).create();
 const playerController = new PlayerController(player, grid);
+const enemyShotController = new EnemyShotController(grid);
 const gameElements = new GameElements;
 
 grid.updateCoordinateValue(player.getCurrentCoordinate(), ENTITY_TYPES.PLAYER);
 
 function gameLoop() {
-    updateGameState(player, grid);
+    updateGameState(enemyShotController, player, grid);
 
     drawBackground(canvas, ctx);
 
@@ -31,14 +33,18 @@ gameLoop();
 window.addEventListener('keydown', (event) => {
     if (event.code == 'ArrowLeft') {
         playerController.moveLeft();
+        gameLoop();
     }
     if (event.code == 'ArrowRight') {
         playerController.moveRight();
+        gameLoop();
     }
     if (event.code == 'ArrowUp') {
         playerController.moveUp();
+        gameLoop();
     }
     if (event.code == 'ArrowDown') {
         playerController.moveDown();
+        gameLoop();
     }
 }, true);
