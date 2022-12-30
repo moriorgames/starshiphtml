@@ -16,14 +16,14 @@ export default class GameElements {
 
                     if (value === ENTITY_TYPES.PLAYER) {
                         ctx.fillStyle = 'white';
-                        let size = 10;
-                        ctx.fillRect(xScreen, yScreen, size, size);
+                        ctx.fillRect(xScreen, yScreen, z, z);
                     }
 
                     if (value === ENTITY_TYPES.ENEMY_SHOT) {
                         ctx.fillStyle = 'yellow';
-                        let size = 1 + z / 3;
-                        ctx.fillRect(xScreen, yScreen, size, size);
+                        ctx.globalAlpha = z/10;
+                        ctx.fillRect(xScreen, yScreen, z, z);
+                        ctx.globalAlpha = 1.0;
                     }
                 });
             });
