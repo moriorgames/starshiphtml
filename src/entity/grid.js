@@ -16,7 +16,11 @@ export default class Grid {
 
     getCoordinateValue(coordinate) {
         if (coordinate instanceof Coordinate) {
-            return this.grid[coordinate.getZ()][coordinate.getY()][coordinate.getX()];
+            try {
+                return this.grid[coordinate.getZ()][coordinate.getY()][coordinate.getX()];
+            } catch (e) {
+                return null;
+            }
         }
     }
 

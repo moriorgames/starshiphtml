@@ -1,6 +1,7 @@
 const canvas = document.getElementById('miCanvas');
 const ctx = canvas.getContext('2d');
 
+import {ENTITY_TYPES} from './definitions/entityTypes.js';
 import GridFactory from './factory/gridFactory.js';
 import Player from './entity/player.js';
 import PlayerController from './controller/playerController.js';
@@ -10,8 +11,10 @@ import GameElements from './presenter/gameElements.js';
 
 const player = new Player;
 const grid = (new GridFactory).create();
-const playerController = new PlayerController(player);
+const playerController = new PlayerController(player, grid);
 const gameElements = new GameElements;
+
+grid.updateCoordinateValue(player.getCurrentCoordinate(), ENTITY_TYPES.PLAYER);
 
 function gameLoop() {
     updateGameState(player, grid);
