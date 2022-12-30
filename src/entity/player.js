@@ -1,9 +1,9 @@
 import Coordinate from './coordinate.js';
 import {PLAYER_INIT_COORDINATE} from '../definitions/playerInitCoordinate.js';
+import {MOVEMENTS} from '../definitions/movements.js';
 
 export default class Player {
     constructor() {
-        console.log('new Player');
         this.x = PLAYER_INIT_COORDINATE.X;
         this.y = PLAYER_INIT_COORDINATE.Y;
         this.z = PLAYER_INIT_COORDINATE.Z;
@@ -14,14 +14,13 @@ export default class Player {
     }
 
     move(direction) {
-        // TODO: we need to protect the player from moving out of limits
-        if (direction === 'left') {
+        if (direction === MOVEMENTS.LEFT) {
             this.x--;
-        } else if (direction === 'right') {
+        } else if (direction === MOVEMENTS.RIGHT) {
             this.x++;
-        } else if (direction === 'up') {
+        } else if (direction === MOVEMENTS.UP) {
             this.y--;
-        } else if (direction === 'down') {
+        } else if (direction === MOVEMENTS.DOWN) {
             this.y++;
         }
     }
