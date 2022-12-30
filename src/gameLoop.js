@@ -17,13 +17,14 @@ const playerController = new PlayerController(player, grid);
 const enemyShotController = new EnemyShotController(grid);
 const enemyController = new EnemyController(grid);
 const gameElements = new GameElements;
+let score = {score: 0};
 
 grid.updateCoordinateValue(player.getCurrentCoordinate(), ENTITY_TYPES.PLAYER);
 
 function gameLoop() {
-    updateGameState(enemyShotController, enemyController, player, grid);
+    updateGameState(score, enemyShotController, enemyController, player, grid);
 
-    drawBackground(canvas, ctx);
+    drawBackground(score, canvas, ctx);
 
     gameElements.draw(canvas, ctx, grid);
 

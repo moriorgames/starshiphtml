@@ -14,5 +14,9 @@ export default class EnemyController {
         let x = Math.floor(Math.random() * GRID_SIZE.WIDTH);
         let y = Math.floor(Math.random() * GRID_SIZE.HEIGHT);
         this.grid.updateCoordinateValue(new Coordinate(x, y, 0), ENTITY_TYPES.ENEMY_SHOT);
+        this.grid.updateCoordinateValue(new Coordinate(x + 1, y, 0), ENTITY_TYPES.ENEMY_SHOT);
+        this.grid.updateCoordinateValue(new Coordinate(x - 1, y, 0), ENTITY_TYPES.ENEMY_SHOT);
+        this.grid.updateCoordinateValue(new Coordinate(x, y + 1, 0), ENTITY_TYPES.ENEMY_SHOT);
+        this.grid.updateCoordinateValue(new Coordinate(x, y - 1, 0), ENTITY_TYPES.ENEMY_SHOT);
     }
 }

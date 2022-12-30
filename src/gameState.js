@@ -1,15 +1,10 @@
-export default function updateGameState(enemyShotController, enemyController, player, grid) {
+export default function updateGameState(score, enemyShotController, enemyController, player, grid) {
 
     enemyController.move();
     enemyController.move();
     enemyController.move();
     enemyController.move();
-    enemyController.move();
-    enemyController.move();
-    enemyController.move();
-    enemyController.move();
-    enemyController.move();
-    enemyShotController.move();
+    enemyShotController.move(score);
 
     // grid.printGrid();
 

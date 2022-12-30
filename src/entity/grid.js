@@ -25,9 +25,9 @@ export default class Grid {
     }
 
     updateCoordinateValue(coordinate, value) {
-        if (coordinate.getZ() < GRID_SIZE.DEPTH &&
-            coordinate.getY() < GRID_SIZE.HEIGHT &&
-            coordinate.getX() < GRID_SIZE.WIDTH) {
+        if (coordinate.getZ() >= 0 && coordinate.getZ() < GRID_SIZE.DEPTH &&
+            coordinate.getY() >= 0 && coordinate.getY() < GRID_SIZE.HEIGHT &&
+            coordinate.getX() >= 0 && coordinate.getX() < GRID_SIZE.WIDTH) {
             this.grid[coordinate.getZ()][coordinate.getY()][coordinate.getX()] = value;
         }
     }
@@ -44,22 +44,6 @@ export default class Grid {
             for (let y = 0; y < height; y++) {
                 this.grid[z][y] = [];
                 for (let x = 0; x < width; x++) {
-                    if (x === 0 && z === 1) {
-                        this.grid[z][y][x] = ENTITY_TYPES.ENEMY_SHOT;
-                        continue;
-                    }
-                    if (x + 1 === GRID_SIZE.WIDTH && z === 1) {
-                        this.grid[z][y][x] = ENTITY_TYPES.ENEMY_SHOT;
-                        continue;
-                    }
-                    if (y === 0 && z === 1) {
-                        this.grid[z][y][x] = ENTITY_TYPES.ENEMY_SHOT;
-                        continue;
-                    }
-                    if (y + 1 === GRID_SIZE.HEIGHT && z === 1) {
-                        this.grid[z][y][x] = ENTITY_TYPES.ENEMY_SHOT;
-                        continue;
-                    }
                     this.grid[z][y][x] = ENTITY_TYPES.EMPTY;
                 }
             }
