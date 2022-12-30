@@ -20,7 +20,7 @@ test('Is able to call Grid constructor and initialize grid with "zero" values', 
     const depth = 5;
     const grid = new Grid(width, height, depth);
 
-    expect(grid.getCoordinateValue(new Coordinate(0, 0, 0))).toBe(0);
+    expect(grid.getCoordinateValue(new Coordinate(1, 1, 0))).toBe(0);
     expect(grid.getCoordinateValue(new Coordinate(2, 3, 1))).toBe(0);
     expect(grid.getCoordinateValue(new Coordinate(4, 4, 4))).toBe(0);
 });
