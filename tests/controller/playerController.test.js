@@ -1,7 +1,7 @@
 import PlayerController from '../../src/controller/playerController.js';
 import Player from '../../src/entity/player.js';
 import {ENTITY_TYPES} from '../../src/definitions/entityTypes.js';
-import {PLAYER_INIT_COORDINATE} from '../../src/definitions/playerInitCoordinate.js';
+import {PLAYER_INIT} from '../../src/definitions/playerInit.js';
 import Grid from '../../src/entity/grid.js';
 import GridFactory from '../../src/factory/gridFactory.js';
 
@@ -27,7 +27,7 @@ describe('Grid created with Grid Factory', () => {
 
         let currentCoordinate = player.getCurrentCoordinate();
 
-        expect(currentCoordinate.getX()).toEqual(PLAYER_INIT_COORDINATE.X - 1);
+        expect(currentCoordinate.getX()).toEqual(PLAYER_INIT.X - 1);
         expect(grid.getCoordinateValue(lastCoordinate)).toEqual(ENTITY_TYPES.EMPTY);
         expect(grid.getCoordinateValue(currentCoordinate)).toEqual(ENTITY_TYPES.PLAYER);
     });
@@ -39,7 +39,7 @@ describe('Grid created with Grid Factory', () => {
 
         let currentCoordinate = player.getCurrentCoordinate();
 
-        expect(currentCoordinate.getX()).toEqual(PLAYER_INIT_COORDINATE.X + 1);
+        expect(currentCoordinate.getX()).toEqual(PLAYER_INIT.X + 1);
         expect(grid.getCoordinateValue(lastCoordinate)).toEqual(ENTITY_TYPES.EMPTY);
         expect(grid.getCoordinateValue(currentCoordinate)).toEqual(ENTITY_TYPES.PLAYER);
     });
@@ -51,7 +51,7 @@ describe('Grid created with Grid Factory', () => {
 
         let currentCoordinate = player.getCurrentCoordinate();
 
-        expect(currentCoordinate.getY()).toEqual(PLAYER_INIT_COORDINATE.Y - 1);
+        expect(currentCoordinate.getY()).toEqual(PLAYER_INIT.Y - 1);
         expect(grid.getCoordinateValue(lastCoordinate)).toEqual(ENTITY_TYPES.EMPTY);
         expect(grid.getCoordinateValue(currentCoordinate)).toEqual(ENTITY_TYPES.PLAYER);
     });
@@ -63,7 +63,7 @@ describe('Grid created with Grid Factory', () => {
 
         let currentCoordinate = player.getCurrentCoordinate();
 
-        expect(currentCoordinate.getY()).toEqual(PLAYER_INIT_COORDINATE.Y + 1);
+        expect(currentCoordinate.getY()).toEqual(PLAYER_INIT.Y + 1);
         expect(grid.getCoordinateValue(lastCoordinate)).toEqual(ENTITY_TYPES.EMPTY);
         expect(grid.getCoordinateValue(currentCoordinate)).toEqual(ENTITY_TYPES.PLAYER);
     });
@@ -82,7 +82,7 @@ describe('Small Grid to trigger out of bounds', () => {
 
         let currentCoordinate = player.getCurrentCoordinate();
 
-        expect(currentCoordinate.getX()).toEqual(PLAYER_INIT_COORDINATE.X);
+        expect(currentCoordinate.getX()).toEqual(PLAYER_INIT.X);
     });
 
     test('Is NOT able to move player to Right out of bounds from the Grid', () => {
@@ -90,7 +90,7 @@ describe('Small Grid to trigger out of bounds', () => {
 
         let currentCoordinate = player.getCurrentCoordinate();
 
-        expect(currentCoordinate.getX()).toEqual(PLAYER_INIT_COORDINATE.X);
+        expect(currentCoordinate.getX()).toEqual(PLAYER_INIT.X);
     });
 
     test('Is NOT able to move player to Up out of bounds from the Grid', () => {
@@ -98,7 +98,7 @@ describe('Small Grid to trigger out of bounds', () => {
 
         let currentCoordinate = player.getCurrentCoordinate();
 
-        expect(currentCoordinate.getY()).toEqual(PLAYER_INIT_COORDINATE.Y);
+        expect(currentCoordinate.getY()).toEqual(PLAYER_INIT.Y);
     });
 
     test('Is NOT able to move player to Down out of bounds from the Grid', () => {
@@ -106,6 +106,6 @@ describe('Small Grid to trigger out of bounds', () => {
 
         let currentCoordinate = player.getCurrentCoordinate();
 
-        expect(currentCoordinate.getY()).toEqual(PLAYER_INIT_COORDINATE.Y);
+        expect(currentCoordinate.getY()).toEqual(PLAYER_INIT.Y);
     });
 });

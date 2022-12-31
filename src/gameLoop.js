@@ -12,10 +12,10 @@ import Background from './presenter/background.js';
 import GameElements from './presenter/gameElements.js';
 import UserInterface from './presenter/userInterface.js';
 
-const player = new Player;
+const player = new Player();
 const grid = (new GridFactory).create();
 const playerController = new PlayerController(player, grid);
-const enemyShotController = new EnemyShotController(grid);
+const enemyShotController = new EnemyShotController(player, grid);
 const enemyController = new EnemyController(grid);
 const background = new Background(canvas, ctx);
 const gameElements = new GameElements(canvas, ctx);
@@ -33,7 +33,9 @@ function gameLoop() {
 
     userInterface.draw(score, player);
 
-    // requestAnimationFrame(gameLoop);
+    if (player.getHealth() > 0) {
+        // requestAnimationFrame(gameLoop);
+    }
 }
 
 gameLoop();

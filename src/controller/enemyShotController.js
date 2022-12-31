@@ -1,12 +1,16 @@
+import Player from '../entity/player.js';
 import Grid from '../entity/grid.js';
 import {GRID_SIZE} from '../definitions/gridSize.js';
 import Coordinate from '../entity/coordinate.js';
 import {ENTITY_TYPES} from '../definitions/entityTypes.js';
 
 export default class EnemyShotController {
-    constructor(grid) {
+    constructor(player, grid) {
         if (grid instanceof Grid) {
             this.grid = grid;
+        }
+        if (player instanceof Player) {
+            this.player = player;
         }
     }
 
@@ -20,6 +24,7 @@ export default class EnemyShotController {
                         let newCoordinate = new Coordinate(x, y, z + 1);
                         if (this.grid.getCoordinateValue(newCoordinate) === ENTITY_TYPES.PLAYER) {
                             score.score++;
+                            this.player.getDamage(9);
                         }
                         this.grid.updateCoordinateValue(newCoordinate, ENTITY_TYPES.ENEMY_SHOT);
                         this.grid.updateCoordinateValue(c, ENTITY_TYPES.EMPTY);
