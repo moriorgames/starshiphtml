@@ -27,6 +27,12 @@ export default class GameElements {
                         this.ctx.fillRect(xScreen, yScreen, z, z);
                     }
 
+                    if (value === ENTITY_TYPES.PLAYER_SHOT) {
+                        this.ctx.fillStyle = 'aqua';
+                        this.ctx.globalAlpha = z / GRID_SIZE.DEPTH + 0.2;
+                        this.ctx.fillRect(xScreen, yScreen, z, z);
+                    }
+
                     if (value === ENTITY_TYPES.ENEMY) {
                         this.ctx.fillStyle = 'red';
                         this.ctx.fillRect(xScreen, yScreen, 5, 5);

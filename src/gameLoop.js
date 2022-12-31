@@ -5,7 +5,7 @@ import {ENTITY_TYPES} from './definitions/entityTypes.js';
 import GridFactory from './factory/gridFactory.js';
 import Player from './entity/player.js';
 import PlayerController from './controller/playerController.js';
-import EnemyShotController from './controller/enemyShotController.js';
+import ShotController from './controller/shotController.js';
 import EnemyController from './controller/enemyController.js';
 import updateGameState from './gameState.js';
 import Background from './presenter/background.js';
@@ -15,7 +15,7 @@ import UserInterface from './presenter/userInterface.js';
 const player = new Player();
 const grid = (new GridFactory).create();
 const playerController = new PlayerController(player, grid);
-const enemyShotController = new EnemyShotController(player, grid);
+const shotController = new ShotController(player, grid);
 const enemyController = new EnemyController(grid);
 const background = new Background(canvas, ctx);
 const gameElements = new GameElements(canvas, ctx);
@@ -25,7 +25,7 @@ let score = {score: 0};
 grid.updateCoordinateValue(player.getCurrentCoordinate(), ENTITY_TYPES.PLAYER);
 
 function gameLoop() {
-    updateGameState(score, enemyShotController, enemyController, player, grid);
+    updateGameState(score, shotController, enemyController, player, grid);
 
     background.draw();
 
@@ -38,23 +38,28 @@ function gameLoop() {
     }
 }
 
+// setInterval(gameLoop, 100);
 gameLoop();
 
-window.addEventListener('keyup', (event) => {
+window.addEventListener('keydown', (event) => {
     if (event.code == 'ArrowLeft') {
         playerController.moveLeft();
-        gameLoop();
+        // gameLoop();
     }
     if (event.code == 'ArrowRight') {
         playerController.moveRight();
-        gameLoop();
+        // gameLoop();
     }
     if (event.code == 'ArrowUp') {
         playerController.moveUp();
-        gameLoop();
+        // gameLoop();
     }
     if (event.code == 'ArrowDown') {
         playerController.moveDown();
-        gameLoop();
+        // gameLoop();
+    }
+    if (event.code == 'KeyA') {
+        playerController.shot();
+        // gameLoop();
     }
 }, true);

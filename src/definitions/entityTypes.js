@@ -1,8 +1,9 @@
 export const ENTITY_TYPES = {
     EMPTY: 0,
     PLAYER: 1,
-    ENEMY: 2,
-    ENEMY_SHOT: 3,
-    OBSTACLE: 4,
-    WALL: 5,
+    PLAYER_SHOT: 2,
+    ENEMY: 3,
+    ENEMY_SHOT: 4,
+    OBSTACLE: 5,
+    WALL: 6,
 };
