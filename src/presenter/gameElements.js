@@ -1,39 +1,48 @@
 import {GRID_SIZE} from '../definitions/gridSize.js';
 import {ENTITY_TYPES} from '../definitions/entityTypes.js';
+import Coordinate from '../entity/coordinate.js';
 
 export default class GameElements {
-    draw(canvas, ctx, grid) {
+    canvas;
+    ctx;
+
+    constructor(canvas, ctx) {
+        this.canvas = canvas;
+        this.ctx = ctx;
+    }
+
+    draw(grid) {
         const focal = 0.88;
-        const data = grid.getData();
 
-        data.forEach(function callback(depth, z) {
-            depth.forEach(function callback(height, y) {
-                height.forEach(function callback(value, x) {
-                    // console.log(`${x}/${y}/${z}: ${value}`);
-
-                    let xScreen = (x - (GRID_SIZE.WIDTH / 2)) * (focal * z) + canvas.width / 2;
-                    let yScreen = (y - (GRID_SIZE.HEIGHT / 2)) * (focal * z) + canvas.height / 2;
+        for (let z = 0; z < GRID_SIZE.DEPTH; z++) {
+            for (let y = 0; y < GRID_SIZE.HEIGHT; y++) {
+                for (let x = 0; x < GRID_SIZE.WIDTH; x++) {
+                    let c = new Coordinate(x, y, z);
+                    let value = grid.getCoordinateValue(c);
+                    let xScreen = (x - (GRID_SIZE.WIDTH / 2)) * (focal * z) + this.canvas.width / 2;
+                    let yScreen = (y - (GRID_SIZE.HEIGHT / 2)) * (focal * z) + this.canvas.height / 2;
 
                     if (value === ENTITY_TYPES.PLAYER) {
-                        ctx.fillStyle = 'white';
-                        ctx.fillRect(xScreen, yScreen, z, z);
+                        this.ctx.fillStyle = 'white';
+                        this.ctx.fillRect(xScreen, yScreen, z, z);
                     }
 
                     if (value === ENTITY_TYPES.ENEMY_SHOT) {
-                        ctx.fillStyle = 'yellow';
-                        ctx.globalAlpha = z/GRID_SIZE.DEPTH;
-                        ctx.fillRect(xScreen, yScreen, z, z);
-                        ctx.globalAlpha = 1.0;
+                        this.ctx.fillStyle = 'yellow';
+                        this.ctx.globalAlpha = z / GRID_SIZE.DEPTH;
+                        this.ctx.fillRect(xScreen, yScreen, z, z);
+                        this.ctx.globalAlpha = 1.0;
                     }
 
                     if (value === ENTITY_TYPES.WALL) {
-                        ctx.fillStyle = 'purple';
-                        ctx.globalAlpha = z/GRID_SIZE.DEPTH/2;
-                        ctx.fillRect(xScreen, yScreen, z, z);
-                        ctx.globalAlpha = 1.0;
+                        this.ctx.fillStyle = 'purple';
+                        this.ctx.globalAlpha = z / GRID_SIZE.DEPTH / 2;
+                        this.ctx.fillRect(xScreen, yScreen, z, z);
+                        this.ctx.globalAlpha = 1.0;
                     }
-                });
-            });
-        });
+                    c = null;
+                }
+            }
+        }
     }
 }

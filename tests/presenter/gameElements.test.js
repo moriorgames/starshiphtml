@@ -12,9 +12,9 @@ test('Is able to create a Game Elements presenter and execute draw method withou
     };
     const grid = (new GridFactory).create();
 
-    const sut = new GameElements();
+    const sut = new GameElements(canvasDouble, ctxDouble);
 
-    sut.draw(canvasDouble, ctxDouble, grid);
+    sut.draw(grid);
 
     expect(ctxDouble.shouldBeCalled).toBeTruthy();
 });

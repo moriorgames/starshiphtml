@@ -18,7 +18,7 @@ const playerController = new PlayerController(player, grid);
 const enemyShotController = new EnemyShotController(grid);
 const enemyController = new EnemyController(grid);
 const background = new Background(canvas, ctx);
-const gameElements = new GameElements();
+const gameElements = new GameElements(canvas, ctx);
 const userInterface = new UserInterface(canvas, ctx);
 let score = {score: 0};
 
@@ -29,7 +29,7 @@ function gameLoop() {
 
     background.draw();
 
-    gameElements.draw(canvas, ctx, grid);
+    gameElements.draw(grid);
 
     userInterface.draw(score, player);
 
