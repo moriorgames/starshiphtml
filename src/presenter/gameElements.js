@@ -12,7 +12,7 @@ export default class GameElements {
     }
 
     draw(grid) {
-        const focal = 0.88;
+        const focal = 0.75;
 
         for (let z = 0; z < GRID_SIZE.DEPTH; z++) {
             for (let y = 0; y < GRID_SIZE.HEIGHT; y++) {
@@ -25,6 +25,11 @@ export default class GameElements {
                     if (value === ENTITY_TYPES.PLAYER) {
                         this.ctx.fillStyle = 'white';
                         this.ctx.fillRect(xScreen, yScreen, z, z);
+                    }
+
+                    if (value === ENTITY_TYPES.ENEMY) {
+                        this.ctx.fillStyle = 'red';
+                        this.ctx.fillRect(xScreen, yScreen, 5, 5);
                     }
 
                     if (value === ENTITY_TYPES.ENEMY_SHOT) {
