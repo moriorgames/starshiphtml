@@ -8,7 +8,7 @@ import PlayerController from './controller/playerController.js';
 import EnemyShotController from './controller/enemyShotController.js';
 import EnemyController from './controller/enemyController.js';
 import updateGameState from './gameState.js';
-import drawBackground from './presenter/background.js';
+import Background from './presenter/background.js';
 import GameElements from './presenter/gameElements.js';
 import UserInterface from './presenter/userInterface.js';
 
@@ -17,6 +17,7 @@ const grid = (new GridFactory).create();
 const playerController = new PlayerController(player, grid);
 const enemyShotController = new EnemyShotController(grid);
 const enemyController = new EnemyController(grid);
+const background = new Background(canvas, ctx);
 const gameElements = new GameElements();
 const userInterface = new UserInterface(canvas, ctx);
 let score = {score: 0};
@@ -26,7 +27,7 @@ grid.updateCoordinateValue(player.getCurrentCoordinate(), ENTITY_TYPES.PLAYER);
 function gameLoop() {
     updateGameState(score, enemyShotController, enemyController, player, grid);
 
-    drawBackground(canvas, ctx);
+    background.draw();
 
     gameElements.draw(canvas, ctx, grid);
 

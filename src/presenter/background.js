@@ -1,9 +1,19 @@
-export default function drawBackground(canvas, ctx) {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+export default class Background {
+    canvas;
+    ctx;
 
-    let img = document.getElementById("background");
-    ctx.drawImage(img, 0, 0);
+    constructor(canvas, ctx) {
+        this.canvas = canvas;
+        this.ctx = ctx;
+    }
 
-    ctx.fillStyle = 'DarkCyan';
-    ctx.fillRect(0, 450, canvas.width, canvas.height);
+    draw() {
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+        this.ctx.fillStyle = 'black';
+        this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+
+        let img = document.getElementById('background');
+        this.ctx.drawImage(img, 0, 25);
+    }
 }
