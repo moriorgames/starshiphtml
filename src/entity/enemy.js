@@ -1,5 +1,6 @@
 import Coordinate from './coordinate.js';
 import {GRID_SIZE} from '../definitions/gridSize.js';
+import {ENEMIES_INIT} from '../definitions/enemiesInit.js';
 
 export default class Enemy {
     x;
@@ -12,8 +13,8 @@ export default class Enemy {
     constructor(x, y) {
         this.x = x;
         this.y = y;
-        this.z = 4;
-        this.health = 10;
+        this.z = ENEMIES_INIT.Z;
+        this.health = ENEMIES_INIT.HEALTH;
     }
 
     getCurrentCoordinate() {
@@ -36,7 +37,7 @@ export default class Enemy {
                 this.y += y;
             }
         } else {
-            const waitUntilMove = 6;
+            const waitUntilMove = 5;
             if (this._shotCounter === 0) {
                 this._shotCounter++;
             } else {

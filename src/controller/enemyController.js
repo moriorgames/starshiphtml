@@ -3,11 +3,14 @@ import {GRID_SIZE} from '../definitions/gridSize.js';
 import Coordinate from '../entity/coordinate.js';
 import {ENTITY_TYPES} from '../definitions/entityTypes.js';
 import Enemy from '../entity/enemy.js';
+import {ENEMIES_INIT} from '../definitions/enemiesInit.js';
 
 export default class EnemyController {
+    _newEnemyCounter = 0;
     _enemies = [];
 
     constructor(grid) {
+
         this.x = 0;
         this.y = 0;
         if (grid instanceof Grid) {
@@ -15,29 +18,32 @@ export default class EnemyController {
         }
 
         this._enemies.push(new Enemy(15, 10));
-        // this._enemies.push(new Enemy(7, 9));
-        // this._enemies.push(new Enemy(12, 11));
-        // this._enemies.push(new Enemy(14, 10));
     }
 
     move() {
+        this._newEnemyCounter++;
         this._clearEnemiesPanel();
         for (let i = 0; i < this._enemies.length; i++) {
             let enemy = this._enemies[i];
             enemy.move();
-            this.grid.updateCoordinateValue(enemy.getCurrentCoordinate(), ENTITY_TYPES.ENEMY);
+            let c = enemy.getCurrentCoordinate();
+            this.grid.updateCoordinateValue(c, ENTITY_TYPES.ENEMY);
             if (enemy.shot()) {
-                let c = enemy.getCurrentCoordinate();
-                this.grid.updateCoordinateValue(new Coordinate(c.getX(), c.getY(), 5), ENTITY_TYPES.ENEMY_SHOT);
-                c = null;
+                this.grid.updateCoordinateValue(new Coordinate(c.getX(), c.getY(), ENEMIES_INIT.Z + 1), ENTITY_TYPES.ENEMY_SHOT);
             }
+            c = null;
+        }
+
+        if (this._newEnemyCounter === 50) {
+            this._enemies.push(new Enemy(15, 10));
+            this._newEnemyCounter = 0;
         }
     }
 
     _clearEnemiesPanel() {
         for (let y = 0; y < GRID_SIZE.HEIGHT; y++) {
             for (let x = 0; x < GRID_SIZE.WIDTH; x++) {
-                this.grid.updateCoordinateValue(new Coordinate(x, y, 4), ENTITY_TYPES.EMPTY);
+                this.grid.updateCoordinateValue(new Coordinate(x, y, ENEMIES_INIT.Z), ENTITY_TYPES.EMPTY);
             }
         }
     }

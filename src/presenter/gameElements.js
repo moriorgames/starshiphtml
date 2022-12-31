@@ -41,7 +41,7 @@ export default class GameElements {
 
                     if (value === ENTITY_TYPES.WALL) {
                         this.ctx.fillStyle = 'purple';
-                        this.ctx.globalAlpha = z / GRID_SIZE.DEPTH / 2;
+                        this.ctx.globalAlpha = z / GRID_SIZE.DEPTH / 3;
                         this.ctx.fillRect(xScreen, yScreen, z, z);
                         this.ctx.globalAlpha = 1.0;
                     }
