@@ -1,4 +1,4 @@
-export default function drawBackground(score, canvas, ctx) {
+export default function drawBackground(canvas, ctx) {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     let img = document.getElementById("background");
@@ -6,8 +6,4 @@ export default function drawBackground(score, canvas, ctx) {
 
     ctx.fillStyle = 'DarkCyan';
     ctx.fillRect(0, 450, canvas.width, canvas.height);
-
-    ctx.font = '18px serif';
-    ctx.fillStyle = 'white';
-    ctx.fillText('Score: ' + score.score, 10, 16);
 }

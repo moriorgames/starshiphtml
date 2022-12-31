@@ -44,7 +44,24 @@ export default class Grid {
             for (let y = 0; y < height; y++) {
                 this.grid[z][y] = [];
                 for (let x = 0; x < width; x++) {
+                    if (x === 0) {
+                        this.grid[z][y][x] = ENTITY_TYPES.WALL;
+                        continue;
+                    }
+                    if (y === 0) {
+                        this.grid[z][y][x] = ENTITY_TYPES.WALL;
+                        continue;
+                    }
+                    if (x === GRID_SIZE.WIDTH-1) {
+                        this.grid[z][y][x] = ENTITY_TYPES.WALL;
+                        continue;
+                    }
+                    if (y === GRID_SIZE.HEIGHT-1) {
+                        this.grid[z][y][x] = ENTITY_TYPES.WALL;
+                        continue;
+                    }
                     this.grid[z][y][x] = ENTITY_TYPES.EMPTY;
+
                 }
             }
         }

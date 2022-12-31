@@ -4,4 +4,5 @@ export const ENTITY_TYPES = {
     ENEMY: 2,
     ENEMY_SHOT: 3,
     OBSTACLE: 4,
+    WALL: 5,
 };

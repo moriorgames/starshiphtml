@@ -3,7 +3,7 @@ import {ENTITY_TYPES} from '../definitions/entityTypes.js';
 
 export default class GameElements {
     draw(canvas, ctx, grid) {
-        const focal = 0.80;
+        const focal = 0.88;
         const data = grid.getData();
 
         data.forEach(function callback(depth, z) {
@@ -21,7 +21,14 @@ export default class GameElements {
 
                     if (value === ENTITY_TYPES.ENEMY_SHOT) {
                         ctx.fillStyle = 'yellow';
-                        ctx.globalAlpha = z/10;
+                        ctx.globalAlpha = z/GRID_SIZE.DEPTH;
+                        ctx.fillRect(xScreen, yScreen, z, z);
+                        ctx.globalAlpha = 1.0;
+                    }
+
+                    if (value === ENTITY_TYPES.WALL) {
+                        ctx.fillStyle = 'purple';
+                        ctx.globalAlpha = z/GRID_SIZE.DEPTH/2;
                         ctx.fillRect(xScreen, yScreen, z, z);
                         ctx.globalAlpha = 1.0;
                     }

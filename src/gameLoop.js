@@ -24,9 +24,13 @@ grid.updateCoordinateValue(player.getCurrentCoordinate(), ENTITY_TYPES.PLAYER);
 function gameLoop() {
     updateGameState(score, enemyShotController, enemyController, player, grid);
 
-    drawBackground(score, canvas, ctx);
+    drawBackground(canvas, ctx);
 
     gameElements.draw(canvas, ctx, grid);
+
+    ctx.font = '18px serif';
+    ctx.fillStyle = 'white';
+    ctx.fillText('Score: ' + score.score, 10, 16);
 
     // requestAnimationFrame(gameLoop);
 }
