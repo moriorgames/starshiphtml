@@ -30,7 +30,7 @@ export default class GameElements {
                     if (value === ENTITY_TYPES.PLAYER_SHOT) {
                         this.ctx.fillStyle = 'aqua';
                         this.ctx.globalAlpha = z / GRID_SIZE.DEPTH + 0.2;
-                        this.ctx.fillRect(xScreen, yScreen, z, z);
+                        this.ctx.fillRect(xScreen, yScreen, z * 0.6, z * 0.8);
                     }
 
                     if (value === ENTITY_TYPES.ENEMY) {
@@ -47,7 +47,7 @@ export default class GameElements {
 
                     if (value === ENTITY_TYPES.WALL) {
                         this.ctx.fillStyle = 'purple';
-                        this.ctx.globalAlpha = z / GRID_SIZE.DEPTH / 3;
+                        this.ctx.globalAlpha = z / GRID_SIZE.DEPTH / 4;
                         this.ctx.fillRect(xScreen, yScreen, z, z);
                         this.ctx.globalAlpha = 1.0;
                     }

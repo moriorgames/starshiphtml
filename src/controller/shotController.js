@@ -14,7 +14,7 @@ export default class ShotController {
         }
     }
 
-    move(score) {
+    move(score, enemyController) {
         for (let z = GRID_SIZE.DEPTH - 1; z >= 0; z--) {
             for (let y = 0; y < GRID_SIZE.HEIGHT; y++) {
                 for (let x = 0; x < GRID_SIZE.WIDTH; x++) {
@@ -23,7 +23,7 @@ export default class ShotController {
                     if (value === ENTITY_TYPES.ENEMY_SHOT) {
                         let newCoordinate = new Coordinate(x, y, z + 1);
                         if (this.grid.getCoordinateValue(newCoordinate) === ENTITY_TYPES.PLAYER) {
-                            this.player.getDamage(9);
+                            this.player.getDamage(3);
                         }
                         this.grid.updateCoordinateValue(newCoordinate, ENTITY_TYPES.ENEMY_SHOT);
                         this.grid.updateCoordinateValue(c, ENTITY_TYPES.EMPTY);
@@ -42,6 +42,7 @@ export default class ShotController {
                         let newCoordinate = new Coordinate(x, y, z - 1);
                         if (this.grid.getCoordinateValue(newCoordinate) === ENTITY_TYPES.ENEMY) {
                             score.score++;
+                            enemyController.removeEnemyByCoordinate(newCoordinate);
                         }
                         this.grid.updateCoordinateValue(newCoordinate, ENTITY_TYPES.PLAYER_SHOT);
                         this.grid.updateCoordinateValue(c, ENTITY_TYPES.EMPTY);

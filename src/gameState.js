@@ -1,7 +1,7 @@
 import {ENTITY_TYPES} from './definitions/entityTypes.js';
 
-export default function updateGameState(score, enemyShotController, enemyController, player, grid) {
+export default function updateGameState(score, shotController, enemyController, player, grid) {
     enemyController.move();
-    enemyShotController.move(score);
+    shotController.move(score, enemyController);
     grid.updateCoordinateValue(player.getCurrentCoordinate(), ENTITY_TYPES.PLAYER);
 }

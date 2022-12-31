@@ -59,7 +59,6 @@ export default class PlayerController {
     }
 
     shot() {
-        console.log('shot')
         let lastCoordinate = this.player.getCurrentCoordinate();
         let lc = new Coordinate(lastCoordinate.getX() - 1, lastCoordinate.getY(), lastCoordinate.getZ() - 1);
         let rc = new Coordinate(lastCoordinate.getX() + 1, lastCoordinate.getY(), lastCoordinate.getZ() - 1);

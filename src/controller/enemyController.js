@@ -10,7 +10,6 @@ export default class EnemyController {
     _enemies = [];
 
     constructor(grid) {
-
         this.x = 0;
         this.y = 0;
         if (grid instanceof Grid) {
@@ -38,6 +37,8 @@ export default class EnemyController {
             this._enemies.push(new Enemy(15, 10));
             this._newEnemyCounter = 0;
         }
+
+        console.log(this._enemies.length);
     }
 
     _clearEnemiesPanel() {
@@ -45,6 +46,18 @@ export default class EnemyController {
             for (let x = 0; x < GRID_SIZE.WIDTH; x++) {
                 this.grid.updateCoordinateValue(new Coordinate(x, y, ENEMIES_INIT.Z), ENTITY_TYPES.EMPTY);
             }
+        }
+    }
+
+    removeEnemyByCoordinate(cc) {
+        for (let i = 0; i < this._enemies.length; i++) {
+            let enemy = this._enemies[i];
+            let c = enemy.getCurrentCoordinate();
+            if (c.getX() === cc.getX() && c.getY() === cc.getY() && c.getZ() === cc.getZ()) {
+                this.grid.updateCoordinateValue(c, ENTITY_TYPES.EMPTY);
+                this._enemies.splice(i, 1);
+            }
+            c = null;
         }
     }
 }

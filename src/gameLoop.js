@@ -24,6 +24,8 @@ let score = {score: 0};
 
 grid.updateCoordinateValue(player.getCurrentCoordinate(), ENTITY_TYPES.PLAYER);
 
+let intervalId = setInterval(gameLoop, 90);
+
 function gameLoop() {
     updateGameState(score, shotController, enemyController, player, grid);
 
@@ -33,12 +35,11 @@ function gameLoop() {
 
     userInterface.draw(score, player);
 
-    if (player.getHealth() > 0) {
-        // requestAnimationFrame(gameLoop);
+    if (player.getHealth() <= 0) {
+        clearInterval(intervalId);
     }
 }
 
-// setInterval(gameLoop, 100);
 gameLoop();
 
 window.addEventListener('keydown', (event) => {
