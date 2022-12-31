@@ -10,13 +10,15 @@ import EnemyController from './controller/enemyController.js';
 import updateGameState from './gameState.js';
 import drawBackground from './presenter/background.js';
 import GameElements from './presenter/gameElements.js';
+import UserInterface from './presenter/userInterface.js';
 
 const player = new Player;
 const grid = (new GridFactory).create();
 const playerController = new PlayerController(player, grid);
 const enemyShotController = new EnemyShotController(grid);
 const enemyController = new EnemyController(grid);
-const gameElements = new GameElements;
+const gameElements = new GameElements();
+const userInterface = new UserInterface(canvas, ctx);
 let score = {score: 0};
 
 grid.updateCoordinateValue(player.getCurrentCoordinate(), ENTITY_TYPES.PLAYER);
@@ -28,9 +30,7 @@ function gameLoop() {
 
     gameElements.draw(canvas, ctx, grid);
 
-    ctx.font = '18px serif';
-    ctx.fillStyle = 'white';
-    ctx.fillText('Score: ' + score.score, 10, 16);
+    userInterface.draw(score, player);
 
     // requestAnimationFrame(gameLoop);
 }
